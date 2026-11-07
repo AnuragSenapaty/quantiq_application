@@ -2,7 +2,7 @@
 // Created by Anurag S on 11/7/26.
 //
 #pragma once
-#include "timer.hpp"
+#include "../code/timer.hpp"
 #include <vector>
 
 int fib_uo(int x)
@@ -43,7 +43,6 @@ int fib_o(int x)
 
     if (flag) return b;
     return a;
-
 }
 
 bool timer_test()
@@ -56,7 +55,7 @@ bool timer_test()
     std::cout << "Optimized Dynamic programing - " << time2 << std::endl;
 
     double time3 = timer([]{ fib_uo(30); }, 100);
-    std::cout << "Recursion - " << time3 << std::endl;
+    std::cout << "Recursion - " << time3 << std::endl << std::endl;
 
     // Timing will change system to system, verifies relative times only
     return time2 < time1 && time2 < time3;
