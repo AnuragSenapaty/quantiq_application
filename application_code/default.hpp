@@ -2,7 +2,6 @@
 // Created by Anurag S on 11/7/26.
 //
 
-// This is a blind, first attempt
 #pragma once
 #include <string>
 #include <fstream>

@@ -9,9 +9,12 @@
 
 int main()
 {
-    // testing helper functions
-    if (not timer_test()) return 1;
-    if (not correctness_test()) return 1;
+    /**
+     * Helpwer function testing, only use on debug mode and without compiler optimization
+     */
+
+    //if (not timer_test()) return 1;
+    //if (not correctness_test()) return 1;
 
     // Starting to test solutions for speed and correctness
     std::cout << '\n'<< "Solution benchmarks" << std::endl;
@@ -47,13 +50,21 @@ int main()
     std::cout << "File correctness - " << compareFiles("../files/output.txt", "../files/file_out4.txt") << std::endl;
     std::cout << "Time benchmark - " << timer([path, output]{ solution4(path,output);}, 1000) << std::endl;
 
-    std::cout << "\nSolution 5 - Using multi threading to try and speed up further" << std::endl;
-    std::cout << "It seems that the calls to make new threads add more overhead than speed up, unfortunately" << std::endl;
-    std::cout << "Solution 4 seems most optimal" << std::endl;
-    output = "../files/file_out5.txt";
-    solution5(pathT,output);
-    std::cout << "File correctness - " << compareFiles("../files/output.txt", "../files/file_out5.txt") << std::endl;
-    std::cout << "Time benchmark - " << timer([path, output]{ solution5(path,output);}, 1000) << std::endl;
+    /**
+     * This solution used pralelization and only works on apple silicone macs,
+     * i think, not tested on x86, off by default when compiling
+     */
+    bool mac_flag = false;
+    if (mac_flag)
+    {
+        std::cout << "\nSolution 5 - Using multi threading to try and speed up further" << std::endl;
+        std::cout << "It seems that the calls to make new threads add more overhead than speed up, unfortunately" << std::endl;
+        std::cout << "Solution 4 seems most optimal" << std::endl;
+        output = "../files/file_out5.txt";
+        solution5(pathT,output);
+        std::cout << "File correctness - " << compareFiles("../files/output.txt", "../files/file_out5.txt") << std::endl;
+        std::cout << "Time benchmark - " << timer([path, output]{ solution5(path,output);}, 1000) << std::endl;
+    }
 
     std::cout << "\nSolution 6 - Switching from if and of stream to stdio" << std::endl;
     std::cout << "Googled around and found out that stdio was much quicker than iostream so I switched" << std::endl;
