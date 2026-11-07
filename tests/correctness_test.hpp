@@ -3,7 +3,7 @@
 //
 
 #pragma once
-#include "../code/correctness.hpp"
+#include "../helper_code/correctness.hpp"
 
 bool correctness_test() {
     if (compareFiles("../files/tester1.txt", "../files/tester2.txt"))

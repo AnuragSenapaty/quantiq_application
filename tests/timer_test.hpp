@@ -2,12 +2,12 @@
 // Created by Anurag S on 11/7/26.
 //
 #pragma once
-#include "../code/timer.hpp"
+#include "../helper_code/timer.hpp"
 #include <vector>
 
 int fib_uo(int x)
 {
-    if (x == 1 or x == 2) return 1;
+    if (x == 0 or x == 1) return 1;
     return fib_uo(x-1)+fib_uo(x-2);
 }
 int fib(int x)
@@ -58,5 +58,6 @@ bool timer_test()
     std::cout << "Recursion - " << time3 << std::endl << std::endl;
 
     // Timing will change system to system, verifies relative times only
-    return time2 < time1 && time2 < time3;
+    //std::cout << fib(30) << ' ' << fib_o(30) << ' ' << fib_uo(30) << std::endl;
+    return time2 < time1 && time2 < time3 && fib(30) == fib_o(30) && fib_o(30) == fib_uo(30);
 }

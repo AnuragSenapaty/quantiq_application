@@ -4,8 +4,9 @@ project(Quantiq)
 set(CMAKE_CXX_STANDARD 26)
 
 add_executable(Quantiq
-        code/timer.hpp
+        helper_code/timer.hpp
         main.cpp
         tests/timer_test.hpp
-        code/correctness.hpp
-        tests/correctness_test.hpp)
+        helper_code/correctness.hpp
+        tests/correctness_test.hpp
+        application_code/default.hpp)
