@@ -1,0 +1,22 @@
+inline void solution6(const char* path, const char* outPath)
+{
+    constexpr std::size_t max_len = 65535;
+    char buf[max_len];
+
+    std::freopen(path, "r", stdin);
+    std::string out;
+
+    while (std::fgets(buf, sizeof(buf), stdin))
+    {
+        std::size_t len = std::strlen(buf);
+        if (len && buf[len - 1] == '\n') --len;
+        std::reverse(buf, buf + len);
+        out.append(buf, len);
+        out.push_back('\n');
+    }
+
+    FILE* output = std::fopen(outPath, "w");
+
+    std::fwrite(out.data(), 1, out.size(), output);
+    std::fclose(output);
+}
