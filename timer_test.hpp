@@ -46,14 +46,18 @@ int fib_o(int x)
 
 }
 
-void timer_test()
+bool timer_test()
 {
-    double time = timer([]{ fib(30); }, 100);
-    std::cout << time << std::endl;
+    std::cout << "Timer test" << std::endl;
+    double time1 = timer([]{ fib(30); }, 100);
+    std::cout << "Dynamic programing - " << time1 << std::endl;
 
-    time = timer([]{ fib_o(30); }, 100);
-    std::cout << time << std::endl;
+    double time2 = timer([]{ fib_o(30); }, 100);
+    std::cout << "Optimized Dynamic programing - " << time2 << std::endl;
 
-    time = timer([]{ fib_uo(30); }, 100);
-    std::cout << time << std::endl;
+    double time3 = timer([]{ fib_uo(30); }, 100);
+    std::cout << "Recursion - " << time3 << std::endl;
+
+    // Timing will change system to system, verifies relative times only
+    return time2 < time1 && time2 < time3;
 }
